@@ -1,0 +1,115 @@
+<!doctype html>
+<html lang="es">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>KineApp — Presentación</title>
+
+    <!-- Fuente -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css" />
+
+</head>
+<body>
+
+    <div class="wrap">
+        <header>
+            <a class="logo" href="#">
+                <span class="mark">K</span>
+                KineApp
+            </a>
+
+            <nav aria-label="Principal">
+                <a href="#servicios">Servicios</a>
+                <a href="#galeria">Galería</a>
+                <a href="#contacto">Contacto</a>
+            </nav>
+        </header>
+        <main></main>
+            <section class="hero" aria-labelledby="welcome-title">
+            <div class="hero-left">
+                <h1 id="welcome-title">Reserva tu hora con nuestros kinesiológos</h1>
+                <p>Elige día y horario en línea con facilidad. Consulta la disponibilidad de los profesionales de la clínica y asegura tu turno en minutos — sin llamadas ni esperas.</p>
+                <div class="actions">
+                <button class="cta">Reservar hora</button>
+                <button class="btn-outline">Ver kinesiólogos</button>
+                </div>
+                <p style="margin-top:10px;color:#3b4b7a;font-size:0.95rem">Turnos confirmados por mensaje. Si necesitas ayuda, podemos reservar por teléfono.</p>
+            </div>
+
+                <div class="hero-right">
+                    <!-- Carrusel: el script `carousel.js` detecta imágenes en archives/ y las rota -->
+                    <!-- Añade tus rutas separadas por comas en el atributo data-images, por ejemplo: data-images="archives/2.jpg,archives/3.png" -->
+                    <div class="carousel" aria-roledescription="carousel" aria-label="Imágenes de la clínica" data-images="archives/2.jpg">
+                        <button class="carousel-btn prev" aria-label="Anterior">‹</button>
+                        <img class="carousel-image" src="archives/1.jpg" alt="Imagen principal de la clínica">
+                        <button class="carousel-btn next" aria-label="Siguiente">›</button>
+                        <div class="carousel-indicators" aria-hidden="false"></div>
+                    </div>
+                </div>
+            </section>
+
+            <section id="servicios" aria-label="Servicios destacables">
+                <div class="features">
+                    <div class="card">
+                        <img src="images/photo2.jpg" alt="">
+                        <div>
+                            <h4>Agenda inteligente</h4>
+                            <p>Reservas, recordatorios y control de citas en un solo lugar.</p>
+                        </div>
+                    </div>
+
+                    <div class="card">
+                        <img src="images/photo3.jpg" alt="">
+                        <div>
+                            <h4>Historial clínico</h4>
+                            <p>Notas estructuradas y acceso rápido a la evolución del paciente.</p>
+                        </div>
+                    </div>
+
+                    <div class="card">
+                        <img src="images/photo4.jpg" alt="">
+                        <div>
+                            <h4>Material visual</h4>
+                            <p>Guías y ejercicios para compartir con tus pacientes fácilmente.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section id="galeria" aria-label="Galería">
+                <div class="gallery">
+                    <img src="images/photo5.jpg" alt="Galería 1">
+                    <img src="images/photo6.jpg" alt="Galería 2">
+                    <img src="images/photo7.jpg" alt="Galería 3">
+                </div>
+            </section>
+
+            <section id="contacto" style="margin-bottom:18px;">
+                <div style="background:white;padding:18px;border-radius:12px;box-shadow: 0 10px 30px rgba(9,22,84,0.04);">
+                    <h3 style="margin-top:0;color:var(--accent)">¿Quieres que te contactemos?</h3>
+                    <p style="margin:0 0 12px;color:#3b4b7a">Déjanos tus datos y nos comunicaremos contigo, cuéntanos tus inquietudes y consultas.</p>
+                    <form style="display:flex;gap:8px;flex-wrap:wrap;">
+                        <input type="text" placeholder="Nombre" style="flex:1;min-width:160px;padding:10px;border-radius:10px;border:1px solid #e6e9f3">
+                        <input type="email" placeholder="Correo" style="flex:1;min-width:200px;padding:10px;border-radius:10px;border:1px solid #e6e9f3">
+                        <input type="number" placeholder="Teléfono" style="flex:1;min-width:200px;padding:10px;border-radius:10px;border:1px solid #e6e9f3">
+                        <button class="cta" style="min-width:140px">Enviar</button>
+                    </form>
+                </div>
+            </section>
+        </main>
+
+        <footer>
+            <div class="small">© <strong>KineApp</strong> — Todos los derechos reservados</div>
+            <div class="socials">
+                <span style="opacity:.85">Síguenos</span>
+                <a href="#" aria-label="Instagram">IG</a>
+                <a href="#" aria-label="Facebook">FB</a>
+                <a href="#" aria-label="LinkedIn">LI</a>
+            </div>
+        </footer>
+    </div>
+
+    <script src="carousel.js" defer></script>
+</body>
+</html>
