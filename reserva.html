@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="es">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>KineApp — Presentación</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="reserva.css" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
+</head>
+<body>
+
+    <div class="wrap">
+        <header>
+            <a href="main.html" class="logo">
+                <span class="mark">K</span>
+                KineApp
+            </a>
+
+            <nav aria-label="Principal">
+                <a href="#servicios">Servicios</a>
+                <a href="#galeria">Galería</a>
+                <a href="#contacto">Contacto</a>
+            </nav>
+        </header>
+        <main></main>
+            <section class="hero" aria-labelledby="welcome-title">
+                <h1 id="welcome-title">Agenda en un momento</h1>
+                <p style="margin-top:1px;color:#110e40;font-size:1.5rem">Tú eliges cuándo. Nosotros hacemos el resto.</p>
+                <img class="hero-image" src="archives/c1.jpg">
+            </section>
+
+            <section class="reserva">
+                <h1 style="text-align: center;">Selecciona tu especialidad</h1>
+                    <div class="btn-group" role="group" aria-label="Basic radio toggle button group">
+                    <input type="radio" class="btn-check" name="btnradio" id="btnradio1" autocomplete="off" >
+                    <label class="btn btn-outline-secondary" for="btnradio1">Traumatologia</label>
+
+                    <input type="radio" class="btn-check" name="btnradio" id="btnradio2" autocomplete="off">
+                    <label class="btn btn-outline-secondary" for="btnradio2">Kinesiología Infantil</label>
+
+                    <input type="radio" class="btn-check" name="btnradio" id="btnradio3" autocomplete="off">
+                    <label class="btn btn-outline-secondary" for="btnradio3">Reintegro Deportivo</label>
+
+                    <input type="radio" class="btn-check" name="btnradio" id="btnradio4" autocomplete="off">
+                    <label class="btn btn-outline-secondary" for="btnradio4">Kinesiología respiratoria</label>
+                </div>
+            </section>      
+
+
+            <section id="galeria" aria-label="Galería">
+                <div class="gallery">
+                    <img src="archives/b1.jpg" alt="Box 1">
+                    <img src="archives/b2.jpg" alt="Resepcion">
+                    <img src="archives/b3.jpg" alt="Galería 3">
+                </div>
+            </section>
+
+            <section id="contacto" style="margin-bottom:18px;">
+                <div style="background:white;padding:18px;border-radius:12px;box-shadow: 0 10px 30px rgba(9,22,84,0.04);">
+                    <h3 style="margin-top:0;color:var(--accent)">¿Quieres que te contactemos?</h3>
+                    <p style="margin:0 0 12px;color:#3b4b7a">Déjanos tus datos y nos comunicaremos contigo, cuéntanos tus inquietudes y consultas.</p>
+                    <form style="display:flex;gap:8px;flex-wrap:wrap;">
+                        <input type="text" placeholder="Nombre" style="flex:1;min-width:160px;padding:10px;border-radius:10px;border:1px solid #e6e9f3">
+                        <input type="email" placeholder="Correo" style="flex:1;min-width:200px;padding:10px;border-radius:10px;border:1px solid #e6e9f3">
+                        <input type="number" placeholder="Teléfono" style="flex:1;min-width:200px;padding:10px;border-radius:10px;border:1px solid #e6e9f3">
+                        <button class="cta" style="min-width:140px">Enviar</button>
+                    </form>
+                </div>
+            </section>
+        </main>
+
+        <footer>
+            <div class="small">© <strong>KineApp</strong> — Todos los derechos reservados</div>
+            <div class="socials">
+                <span style="opacity:.85">Síguenos</span>
+                <a href="#" aria-label="Instagram">IG</a>
+                <a href="#" aria-label="Facebook">FB</a>
+                <a href="#" aria-label="LinkedIn">LI</a>
+            </div>
+        </footer>
+    </div>
+
+    <script src="carousel.js" defer></script>
+</body>
+</html>
