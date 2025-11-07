@@ -68,6 +68,7 @@
 
         .cta{
             background:var(--brand);
+            text-align: center;
             color:var(--accent);
             border:none;
             padding:10px 16px;
@@ -92,7 +93,7 @@
         }
         .hero-image{
             width:100%;
-            max-width:900px;
+            max-width:4900px;
             height: 500px;
             border-radius:16px;
             box-shadow: 0 12px 40px rgba(9,22,84,0.12);

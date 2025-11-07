@@ -115,6 +115,31 @@
             box-shadow: 0 12px 40px rgba(9,22,84,0.12);
         }
 
+        /* Reserva page specific fixes */
+        .hero .hero-image{
+            width:100%;
+            max-height:360px; /* un poco más grande */
+            object-fit:cover;
+            border-radius:12px;
+            box-shadow: 0 12px 40px rgba(9,22,84,0.12);
+            display:block;
+            margin-top:12px;
+        }
+
+        /* date/time layout in reserva.html */
+    .reserva .date-row{ display:flex; gap:8px; flex-wrap:wrap; align-items:flex-start; }
+    /* date column slightly smaller so time select stays aligned */
+    .reserva .date-row .date-col{ flex:1 1 220px; min-width:140px; }
+    .reserva .date-row .time-col{ flex:0 0 140px; }
+    /* Ensure inputs have consistent box-sizing and padding */
+    .reserva input[type="date"], .reserva select#time{ width:100%; box-sizing:border-box; padding:10px 12px; }
+        .reserva input[type="date"], .reserva select#time{ width:100%; box-sizing:border-box; }
+
+        @media (max-width:520px){
+            .reserva .date-row{ flex-direction:column; }
+            .reserva .date-row .time-col{ width:100%; flex:1 1 auto; }
+        }
+
         /* Carousel */
         .carousel{
             position:relative;

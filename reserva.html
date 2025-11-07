@@ -5,7 +5,29 @@
     <meta name="viewport" content="width=device-width,initial-scale=1" />
     <title>KineApp — Presentación</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <!-- Reuse main styles so reserva mantiene la misma paleta y estructura -->
     <link rel="stylesheet" href="reserva.css" />
+    <!-- Inline overrides (priority) to force visual fixes if external CSS is cached) -->
+    <style>
+        /* Slightly larger hero image but limited so it doesn't cover the page */
+        .hero .hero-image{ width:100%; max-height:340px; object-fit:cover; border-radius:12px; box-shadow:0 12px 40px rgba(9,22,84,0.12); display:block; margin-top:12px }
+
+        /* Force date/time layout: date column a bit más estrecha, time aligned */
+        .reserva .date-row{ display:flex; gap:8px; flex-wrap:wrap; align-items:flex-start }
+        .reserva .date-row .date-col{ flex:1 1 200px; min-width:140px }
+        .reserva .date-row .time-col{ flex:0 0 140px }
+        .reserva input[type="date"], .reserva select#time{ box-sizing:border-box; padding:10px 12px }
+
+        /* Ensure each column stacks label+control and both columns use same vertical rhythm */
+        .reserva .date-row > div{ display:flex; flex-direction:column; justify-content:flex-start }
+        .reserva .date-row label{ margin-bottom:6px; display:block }
+        .reserva .date-row input[type="date"], .reserva .date-row select{ min-height:44px; line-height:1.2 }
+
+        @media (max-width:520px){
+            .reserva .date-row{ flex-direction:column }
+            .reserva .date-row .time-col{ width:100%; flex:1 1 auto }
+        }
+    </style>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
 </head>
@@ -32,20 +54,63 @@
             </section>
 
             <section class="reserva">
-                <h1 style="text-align: center;">Selecciona tu especialidad</h1>
-                    <div class="btn-group" role="group" aria-label="Basic radio toggle button group">
-                    <input type="radio" class="btn-check" name="btnradio" id="btnradio1" autocomplete="off" >
-                    <label class="btn btn-outline-secondary" for="btnradio1">Traumatologia</label>
+                <h1 style="text-align: center; margin-bottom:6px;">Reservar hora</h1>
+                <p style="text-align:center;color:#203060;margin-top:0;margin-bottom:18px">Completa el formulario y confirma tu turno.</p>
 
-                    <input type="radio" class="btn-check" name="btnradio" id="btnradio2" autocomplete="off">
-                    <label class="btn btn-outline-secondary" for="btnradio2">Kinesiología Infantil</label>
+                <form id="reservationForm" style="background:white;padding:18px;border-radius:12px;box-shadow: 0 10px 30px rgba(9,22,84,0.04);">
+                    <div style="margin-bottom:12px">
+                        <label class="small" for="specialty" style="display:block;margin-bottom:6px;font-weight:600">Especialidad</label>
+                        <div class="btn-group" role="group" aria-label="Especialidades">
+                            <input type="radio" class="btn-check" name="specialty" id="spec1" autocomplete="off" value="Traumatologia" required>
+                            <label class="btn btn-outline-secondary" for="spec1">Traumatología</label>
 
-                    <input type="radio" class="btn-check" name="btnradio" id="btnradio3" autocomplete="off">
-                    <label class="btn btn-outline-secondary" for="btnradio3">Reintegro Deportivo</label>
+                            <input type="radio" class="btn-check" name="specialty" id="spec2" autocomplete="off" value="Kinesiologia Infantil">
+                            <label class="btn btn-outline-secondary" for="spec2">Kinesiología infantil</label>
 
-                    <input type="radio" class="btn-check" name="btnradio" id="btnradio4" autocomplete="off">
-                    <label class="btn btn-outline-secondary" for="btnradio4">Kinesiología respiratoria</label>
-                </div>
+                            <input type="radio" class="btn-check" name="specialty" id="spec3" autocomplete="off" value="Reintegro Deportivo">
+                            <label class="btn btn-outline-secondary" for="spec3">Reintegro deportivo</label>
+
+                            <input type="radio" class="btn-check" name="specialty" id="spec4" autocomplete="off" value="Kinesiologia Respiratoria">
+                            <label class="btn btn-outline-secondary" for="spec4">Kinesiología respiratoria</label>
+                        </div>
+                    </div>
+
+                    <div style="display:flex;gap:8px;flex-wrap:wrap;margin-bottom:12px">
+                        <div style="flex:1;min-width:160px">
+                            <label class="small" for="name">Nombre</label>
+                            <input id="name" name="name" type="text" placeholder="Nombre completo" class="" required style="width:100%;padding:10px;border-radius:10px;border:1px solid #e6e9f3">
+                        </div>
+                        <div style="flex:1;min-width:140px">
+                            <label class="small" for="rut">RUT</label>
+                            <input id="rut" name="rut" type="text" placeholder="12.345.678-9" class="" required style="width:100%;padding:10px;border-radius:10px;border:1px solid #e6e9f3">
+                        </div>
+                        <div style="flex:1;min-width:140px">
+                            <label class="small" for="phone">Teléfono</label>
+                            <input id="phone" name="phone" type="tel" placeholder="9 1234 5678" class="" required style="width:100%;padding:10px;border-radius:10px;border:1px solid #e6e9f3">
+                        </div>
+                    </div>
+
+                    <div class="date-row" style="display:flex;gap:8px;flex-wrap:wrap;align-items:end;margin-bottom:12px">
+                        <div class="date-col" style="flex:1;min-width:180px">
+                            <label class="small" for="date">Día de la cita</label>
+                            <input id="date" name="date" type="date" required style="width:100%;padding:10px;border-radius:10px;border:1px solid #e6e9f3">
+                            
+                        </div>
+                        <div class="time-col" style="width:160px">
+                            <label class="small" for="time">Hora</label>
+                            <select id="time" name="time" required style="width:100%;padding:10px;border-radius:10px;border:1px solid #e6e9f3">
+                                <!-- opciones creadas por JS -->
+                            </select>
+                        </div>
+                    </div>
+                            <div id="dateHelp" style="font-size:0.85rem;color:#607090;margin-top:6px">Puedes reservar hasta 2 semanas desde hoy.</div>
+
+                    <div style="margin-top:30px;text-align:center;gap:8px;justify-content:flex-end;align-items:center">
+                        <button type="submit" class="cta">Confirmar reserva</button>
+                    </div>
+                </form>
+
+                <div id="result" style="margin-top:12px;display:none;background:#f7ffef;padding:12px;border-radius:10px;border:1px solid #e9f7da;color:#133000"></div>
             </section>      
 
 
@@ -83,5 +148,131 @@
     </div>
 
     <script src="carousel.js" defer></script>
+    <script>
+        // Reserva form logic: valida fecha, popula horas y guarda en variables
+        (function(){
+            const dateInput = document.getElementById('date');
+            const timeSelect = document.getElementById('time');
+            const form = document.getElementById('reservationForm');
+            const result = document.getElementById('result');
+
+            // Set date limits: from today to +14 days
+            function setDateLimits(){
+                const today = new Date();
+                const tzOffset = today.getTimezoneOffset() * 60000; // ms
+                const localISO = new Date(today - tzOffset).toISOString().slice(0,10);
+                const max = new Date();
+                max.setDate(today.getDate() + 14);
+                const localMax = new Date(max - tzOffset).toISOString().slice(0,10);
+                dateInput.min = localISO;
+                dateInput.max = localMax;
+                if(!dateInput.value) dateInput.value = localISO;
+            }
+
+            // Populate times 08:00 .. 17:00 every 1 hour
+            function populateTimes(){
+                timeSelect.innerHTML = '';
+                for(let h=8; h<=17; h++){
+                    const hh = String(h).padStart(2,'0');
+                    const opt = document.createElement('option');
+                    opt.value = `${hh}:00`;
+                    opt.textContent = `${hh}:00`;
+                    timeSelect.appendChild(opt);
+                }
+            }
+
+            function collectData(){
+                const specialty = form.elements['specialty']?.value || '';
+                const name = document.getElementById('name').value.trim();
+                const rut = document.getElementById('rut').value.trim();
+                const phone = document.getElementById('phone').value.trim();
+                const date = dateInput.value;
+                const time = timeSelect.value;
+                return { specialty, name, rut, phone, date, time };
+            }
+
+            function validate(data){
+                const errors = [];
+                if(!data.specialty) errors.push('Selecciona una especialidad.');
+                if(!data.name) errors.push('Ingresa tu nombre.');
+                if(!data.rut) errors.push('Ingresa tu RUT.');
+                if(!data.phone) errors.push('Ingresa tu teléfono.');
+                if(!data.date) errors.push('Selecciona una fecha.');
+                if(!data.time) errors.push('Selecciona una hora.');
+
+                // Additional date range check
+                if(data.date){
+                    const d = new Date(data.date);
+                    const today = new Date();
+                    today.setHours(0,0,0,0);
+                    const max = new Date(); max.setDate(today.getDate()+14); max.setHours(23,59,59,999);
+                    if(d < today) errors.push('La fecha no puede ser anterior a hoy.');
+                    if(d > max) errors.push('La fecha no puede ser mayor a 2 semanas desde hoy.');
+                }
+
+                return errors;
+            }
+
+            // On submit save to window and localStorage for later use
+            form.addEventListener('submit', (e)=>{
+                e.preventDefault();
+                const data = collectData();
+                const errors = validate(data);
+                if(errors.length){
+                    result.style.display = 'block';
+                    result.style.background = '#fff3f0';
+                    result.style.color = '#5a1b00';
+                    result.innerHTML = '<strong>Corregir:</strong><br>' + errors.join('<br>');
+                    return;
+                }
+
+                // Store in globals/localStorage
+                window.reservationData = data;
+                try{ localStorage.setItem('reservationData', JSON.stringify(data)); }catch(e){}
+
+                // Ask for destination WhatsApp number (country code + number), e.g. 56912345678
+                let to = localStorage.getItem('reservation_to') || '';
+                if(!to){
+                    to = prompt('Ingresa el número de WhatsApp destino (con código de país), por ejemplo 56912345678');
+                    if(to) localStorage.setItem('reservation_to', to);
+                }
+
+                // Show local confirmation immediately
+                result.style.display = 'block';
+                result.style.background = '#f7ffef';
+                result.style.color = '#133000';
+                result.innerHTML = '<strong>Reserva guardada en variables.</strong><br>' +
+                    `Especialidad: ${data.specialty} — ${data.date} ${data.time}`;
+                console.log('reservationData', data);
+
+                // Try to send to local webhook (botwsp.js must be running)
+                if(to){
+                    fetch('http://localhost:3000/send-reservation', {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify({ to, ...data })
+                    }).then(r => r.json())
+                    .then(json => {
+                        if(json && json.ok){
+                            result.innerHTML += '<br><strong>Mensaje enviado por WhatsApp.</strong>';
+                        } else {
+                            result.innerHTML += `<br><strong>Error al enviar WhatsApp:</strong> ${json && json.error ? json.error : 'respuesta inválida'}`;
+                        }
+                    }).catch(err => {
+                        console.warn('No se pudo conectar al servidor local:', err);
+                        result.innerHTML += '<br><strong>Advertencia:</strong> no se pudo enviar por WhatsApp (no se detectó el servicio local).';
+                    });
+                } else {
+                    result.innerHTML += '<br><strong>Nota:</strong> no se indicó número destino; no se envió WhatsApp.';
+                }
+            });
+
+            // Preview button removed — use the Confirmar reserva button to save and inspect data.
+
+            // Initialize
+            setDateLimits();
+            populateTimes();
+        })();
+    </script>
 </body>
 </html>
