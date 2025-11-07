@@ -47,9 +47,9 @@ app.post('/send-reservation', async (req, res) => {
 
     // Normalize target (strip + and non-digits)
     const onlyDigits = String(to).replace(/\D/g, '');
-    const chatId = `${56930907224}@c.us`;
+    const chatId = `${56979250527}@c.us`;
 
-    const message = `Nueva reserva\nEspecialidad: ${specialty}\nNombre: ${name}\nRUT: ${rut}\nTeléfono: ${phone}\nFecha: ${date}\nHora: ${time}`;
+    const message = `Nueva Reserva✅\nEspecialidad: ${specialty}\nNombre: ${name}\nRUT: ${rut}\nTeléfono: +56${phone}\nFecha: ${date}\nHora: ${time}`;
 
     try {
         const sent = await client.sendMessage(chatId, message);

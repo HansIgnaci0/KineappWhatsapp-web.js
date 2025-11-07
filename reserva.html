@@ -76,9 +76,10 @@
                     </div>
 
                     <div style="display:flex;gap:8px;flex-wrap:wrap;margin-bottom:12px">
-                        <div style="flex:1;min-width:160px">
-                            <label class="small" for="name">Nombre</label>
-                            <input id="name" name="name" type="text" placeholder="Nombre completo" class="" required style="width:100%;padding:10px;border-radius:10px;border:1px solid #e6e9f3">
+                        <div style="flex:1;min-width:140px">
+                            <label class="small" for="phone">Teléfono</label>
+                            <!-- inputmode + pattern ayudan en móviles; JS limpiará caracteres no numéricos en tiempo real -->
+                            <input id="phone" name="phone" type="tel" inputmode="numeric" pattern="\\d*" placeholder="56912345678" class="" required style="width:100%;padding:10px;border-radius:10px;border:1px solid #e6e9f3">
                         </div>
                         <div style="flex:1;min-width:140px">
                             <label class="small" for="rut">RUT</label>
@@ -86,7 +87,7 @@
                         </div>
                         <div style="flex:1;min-width:140px">
                             <label class="small" for="phone">Teléfono</label>
-                            <input id="phone" name="phone" type="tel" placeholder="9 1234 5678" class="" required style="width:100%;padding:10px;border-radius:10px;border:1px solid #e6e9f3">
+                            <input id="phone" name="phone" type="number" placeholder="9 1234 5678" class="" required style="width:100%;padding:10px;border-radius:10px;border:1px solid #e6e9f3">
                         </div>
                     </div>
 
@@ -169,6 +170,16 @@
                 if(!dateInput.value) dateInput.value = localISO;
             }
 
+            // Phone input: force only digits while typing (user requested "solo numero")
+            const phoneInput = document.getElementById('phone');
+            if(phoneInput){
+                // Ensure mobile keyboards show numeric layout and pattern is set (also set via attribute above)
+                phoneInput.addEventListener('input', ()=>{
+                    const cleaned = phoneInput.value.replace(/\D/g,'');
+                    if(phoneInput.value !== cleaned) phoneInput.value = cleaned;
+                });
+            }
+
             // Populate times 08:00 .. 17:00 every 1 hour
             function populateTimes(){
                 timeSelect.innerHTML = '';
@@ -197,6 +208,7 @@
                 if(!data.name) errors.push('Ingresa tu nombre.');
                 if(!data.rut) errors.push('Ingresa tu RUT.');
                 if(!data.phone) errors.push('Ingresa tu teléfono.');
+                else if(!/^\d+$/.test(data.phone)) errors.push('El teléfono debe contener sólo números.');
                 if(!data.date) errors.push('Selecciona una fecha.');
                 if(!data.time) errors.push('Selecciona una hora.');
 
